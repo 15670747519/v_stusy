@@ -26,12 +26,12 @@
                                 <el-table-column type="index" label="#">
                                 </el-table-column>
                                 <el-table-column
-                                    prop="create_time"
-                                    label="日期"
+                                    prop="role_name"
+                                    label="角色"
                                     width="180">
                                 </el-table-column>
                                 <el-table-column
-                                    prop="role_name"
+                                    prop="username"
                                     label="姓名"
                                     width="180">
                                 </el-table-column>
@@ -69,7 +69,7 @@
                                         <el-button type="error"  icon="el-icon-delete"  size="small" @click="remove(scope.row.id)"></el-button>
                                         </el-tooltip>
                                         <el-tooltip class="item" effect="dark" content="设置" placement="top">
-                                        <el-button type="warning" icon="el-icon-setting"  size="small"></el-button>
+                                        <el-button type="warning" icon="el-icon-setting"  size="small" @click="setrole(scope.row)"></el-button>
                                         </el-tooltip>
                                     </template>
                                 </el-table-column>
@@ -147,6 +147,32 @@
             </el-dialog>
         </div>
 
+        <!--设置权限-->
+        <el-dialog
+        title="设置角色"
+        :visible.sync="addroleDialogVisible"
+        width="50%"
+        :before-close="handleClose"
+        @close="setRoleDialogClose">
+        <p>当前用户：{{userinfo.username}}</p>
+        <p>当前角色：{{userinfo.role_name}}</p>
+        <p>分配的新角色：        
+            <el-select v-model="selectRoleId" placeholder="请选择">
+                <el-option
+                v-for="item in rolelist"
+                :key="item.id"
+                :label="item.roleName"
+                :value="item.id">
+                </el-option>
+            </el-select>
+
+        </p>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="addroleDialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="saveRoleInfo">确 定</el-button>
+        </span>
+        </el-dialog>
+
     </div>
 </template>
 
@@ -176,6 +202,13 @@ export default {
             dialogVisible: false,
 
             modifyDialogVisible: false,
+
+            addroleDialogVisible: false,
+            
+            userinfo: {},
+            rolelist: [],
+
+            selectRoleId: '',
 
             addForm: {
                 name: '',
@@ -225,7 +258,8 @@ export default {
     },
     methods:{
         async getUserList(){
-            let res = await this.$http.get('users',{params: this.queryInfo})
+            let res = await this.$http.get('users',{params: this.queryInfo});
+            console.log(res, 7777)
             if(res.data.meta.status !== 200) return this.$message.error('获取用户数据失败')
             this.userlist = res.data.data.users;
             this.total = res.data.data.total;
@@ -361,6 +395,44 @@ export default {
                     message: '已取消删除'
                 });          
             });
+        },
+
+        async setrole(userinfo){
+            this.userinfo = userinfo;
+
+            const {data} = await this.$http.get('roles');
+            console.log(data, 232323)
+
+            if(data.meta.status !==200){
+                return this.$message.error('获取橘色列表失败');
+            }
+
+            this.rolelist = data.data;
+
+            this.addroleDialogVisible =true;
+
+        },
+        async saveRoleInfo(){
+            console.log()
+            if(!this.selectRoleId){
+                return this.$message.error('请选择角色');
+            }
+
+            const {data} = await this.$http.put(`users/${this.userinfo.id}role`, {
+                rid: this.selectRoleId
+            })
+            if(data.meta.status !==200){
+                return this.$message.error('更新角色失败');
+            }
+
+            this.$message.success('更新角色成功');
+            this.getUserList();
+            this.addroleDialogVisible = false;
+        },
+
+        setRoleDialogClose(){
+            this.selectRoleId = '';
+            this.userinfo = {};
         }
     
 

@@ -28,6 +28,12 @@ import { Button, Select, Form, FormItem, Input, Message,Container,
   Dialog,
   MessageBox,
   Alert,
+  Tag,
+  Tree,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Option,
 
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -57,6 +63,16 @@ Vue.component(Switch.name, Switch)
 Vue.component(Tooltip.name, Tooltip)
 Vue.component(Pagination.name, Pagination)
 Vue.component(Dialog.name, Dialog)
+Vue.component(Tag.name, Tag)
+Vue.component(Tree.name, Tree)
+Vue.component(Dropdown.name, Dropdown)
+Vue.component(DropdownItem.name, DropdownItem)
+Vue.component(DropdownMenu.name, DropdownMenu)
+Vue.component(Option.name, Option)
+
+
+
+
 
 
 

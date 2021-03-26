@@ -4,6 +4,8 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welecom from '../components/Welecom.vue'
 import User from '../components/user/User.vue'
+import Rights from '../components/rights/Rights'
+import Role from '../components/rights/Role'
 
 Vue.use(Router)
 
@@ -34,8 +36,18 @@ const router =  new Router({
         path: '/users',
         name: 'User',
         component: User
-      }]
-    }
+        },
+        {
+          path: '/rights',
+          component: Rights
+        },
+        {
+          path: '/roles',
+          component: Role
+        },
+      ]
+    },
+    
 
   ]
 })
