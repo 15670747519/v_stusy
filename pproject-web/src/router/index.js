@@ -6,6 +6,7 @@ import Welecom from '../components/Welecom.vue'
 import User from '../components/user/User.vue'
 import Rights from '../components/rights/Rights'
 import Role from '../components/rights/Role'
+import Cate from '../components/goods/Cate'
 
 Vue.use(Router)
 
@@ -45,6 +46,10 @@ const router =  new Router({
           path: '/roles',
           component: Role
         },
+        {
+          path: '/goods',
+          component: Cate
+        }
       ]
     },
     

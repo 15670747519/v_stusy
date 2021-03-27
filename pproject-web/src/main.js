@@ -7,6 +7,9 @@ import less from 'less'
 
 import axios from 'axios'
 
+import TreeTable from 'vue-table-with-tree-grid'
+
+
 import { Button, Select, Form, FormItem, Input, Message,Container,
   Header,
   Aside,
@@ -34,7 +37,7 @@ import { Button, Select, Form, FormItem, Input, Message,Container,
   DropdownItem,
   DropdownMenu,
   Option,
-
+  Cascader
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -69,6 +72,10 @@ Vue.component(Dropdown.name, Dropdown)
 Vue.component(DropdownItem.name, DropdownItem)
 Vue.component(DropdownMenu.name, DropdownMenu)
 Vue.component(Option.name, Option)
+Vue.component(Cascader.name, Cascader)
+
+
+Vue.component('tree-table', TreeTable)
 
 
 
