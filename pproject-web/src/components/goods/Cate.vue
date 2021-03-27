@@ -125,20 +125,20 @@ export default {
 
             columns:[
                 {
-                    lable:'分类名称',
+                    label:'分类名称',
                     prop:'cat_name'
                 },{
-                    lable:'是否有效',
+                    label:'是否有效',
                     type: 'template',
                     template: 'isok',
                 },
                 {
-                    lable:'排序',
+                    label:'排序',
                     type: 'template',
                     template: 'order',
                 },
                 {
-                    lable:'操作',
+                    label:'操作',
                     type: 'template',
                     template: 'opt',
                 }
