@@ -47,14 +47,12 @@
         :visible.sync="addCateDialogVisable"
         width="50%"
         >
-
         <el-form :model="addCateForm" :rules="rules" ref="addCateForm" label-width="100px">
         <el-form-item label="分类名称:" prop="cat_name">
             <el-input v-model="addCateForm.cat_name"></el-input>
         </el-form-item>
 
         <el-form-item label="父级分类:" >
-
             <el-cascader
                 v-model="selectedKeys"
                 :options="cateparentlist"
@@ -64,7 +62,6 @@
                 clearable
                 >
             </el-cascader>
-
         </el-form-item>
         </el-form>
 
@@ -74,6 +71,9 @@
             <el-button type="primary" @click="addCat">确 定</el-button>
         </span>
         </el-dialog>
+
+
+        
     </div>
 </template>
 

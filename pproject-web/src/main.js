@@ -37,7 +37,9 @@ import { Button, Select, Form, FormItem, Input, Message,Container,
   DropdownItem,
   DropdownMenu,
   Option,
-  Cascader
+  Cascader,
+  Tabs,
+  TabPane,
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -73,6 +75,12 @@ Vue.component(DropdownItem.name, DropdownItem)
 Vue.component(DropdownMenu.name, DropdownMenu)
 Vue.component(Option.name, Option)
 Vue.component(Cascader.name, Cascader)
+Vue.component(Alert.name, Alert)
+Vue.component(Tabs.name, Tabs)
+Vue.component(TabPane.name, TabPane)
+
+
+
 
 
 Vue.component('tree-table', TreeTable)
