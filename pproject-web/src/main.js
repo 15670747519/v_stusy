@@ -53,6 +53,8 @@ import { Button, Select, Form, FormItem, Input, Message,Container,
   CheckboxGroup,
   Checkbox,
   Upload,
+  Timeline,
+  TimelineItem,
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -97,7 +99,9 @@ Vue.component(RadioGroup.name, RadioGroup)
 Vue.component(RadioButton.name, RadioButton)
 Vue.component(CheckboxGroup.name, CheckboxGroup)
 Vue.component(Checkbox.name, Checkbox)
-Vue.component(Upload.name, Upload);
+Vue.component(Upload.name, Upload)
+Vue.component(Timeline.name, Timeline)
+Vue.component(TimelineItem.name,TimelineItem)
 
 
 
