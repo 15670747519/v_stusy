@@ -9,6 +9,12 @@ import axios from 'axios'
 
 import TreeTable from 'vue-table-with-tree-grid'
 
+//导入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
 
 import { Button, Select, Form, FormItem, Input, Message,Container,
   Header,
@@ -40,6 +46,13 @@ import { Button, Select, Form, FormItem, Input, Message,Container,
   Cascader,
   Tabs,
   TabPane,
+  Step,
+  Steps,
+  RadioGroup,
+  RadioButton,
+  CheckboxGroup,
+  Checkbox,
+  Upload,
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -78,12 +91,30 @@ Vue.component(Cascader.name, Cascader)
 Vue.component(Alert.name, Alert)
 Vue.component(Tabs.name, Tabs)
 Vue.component(TabPane.name, TabPane)
+Vue.component(Steps.name, Steps)
+Vue.component(Step.name, Step)
+Vue.component(RadioGroup.name, RadioGroup)
+Vue.component(RadioButton.name, RadioButton)
+Vue.component(CheckboxGroup.name, CheckboxGroup)
+Vue.component(Checkbox.name, Checkbox)
+Vue.component(Upload.name, Upload);
+
 
 
 
 
 
 Vue.component('tree-table', TreeTable)
+Vue.filter('dateFormat', function (originval) {
+  const dt = new Date(originval)
+  const y = dt.getDay()
+  const m = (dt.getMonth() + 1 + '').padStart(2, '0')
+  const d = (dt.getDay() + 1 + '').padStart(2, '0')
+  const hh = (dt.getHours() + 1 + '').padStart(2, '0')
+  const mm = (dt.getMinutes() + 1 + '').padStart(2, '0')
+  const ss = (dt.getSeconds() + 1 + '').padStart(2, '0')
+  return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+})
 
 
 
@@ -119,6 +150,9 @@ axios.interceptors.request.use((config) => {
 })
 
 Vue.prototype.$http = axios;
+//富文本编辑器
+Vue.use(VueQuillEditor);
+
 
 
 /* eslint-disable no-new */
